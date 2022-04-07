@@ -77,9 +77,21 @@ public class MyAsyncTask extends AsyncTask<String, Void, String> {
                 // Récupère la liste des clubs
                 if (jsonObject.isNull("succes")==false) {
                     JSONArray lignesArray = jsonObject.getJSONArray("succes");
+                    Log.d(MainActivity.LOG_TAG, "zebi_all_succes=" + lignesArray);
                     // Boucle de lecture des clubs
                     for (int i = 0; i < lignesArray.length(); i++) {
                         JSONObject listJsonObject = lignesArray.getJSONObject(i);
+                        if(i==0){
+                            User user = new User(listJsonObject);
+                            Log.d(MainActivity.LOG_TAG, "zebi_all_user=" + user);
+                        }else if(i==1){
+                            Periode periode = new Periode(listJsonObject);
+                            Log.d(MainActivity.LOG_TAG, "zebi_all_periode=" + periode);
+                        }else{
+                            Note note = new Note(listJsonObject);
+                            Log.d(MainActivity.LOG_TAG, "zebi_all_note=" + note);
+
+                        }
                         // Crée un objet métier Club à partir de l'objet JSONObject
                         Ligne ligne = new Ligne(listJsonObject);
                         // Ajoute l'objet métier dans la collection ArrayList<Club>
