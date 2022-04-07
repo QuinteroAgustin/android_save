@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">fredi</string>
+    <string name="titre">Page d\'accueil</string>
+    <string name="titre_desc">FREDI</string>
+    <string name="connexion">Se connecter</string>
+    <string name="connection_title">Connectez-Vous</string>
+    <string name="password">Mot de passe</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="note_title">Note année :</string>
+    <string name="detail_ligne_title">Ligne de frais</string>
+</resources>
