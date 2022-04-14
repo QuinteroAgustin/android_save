@@ -47,12 +47,12 @@ public class DetailsLigne extends AppCompatActivity {
         myViewRepas.setText("Mt_Repas : " + myData[5]);
 
         myViewHebergement = (TextView) findViewById(R.id.tv_mt_hebergement);
-        myViewHebergement.setText("Mt_Hebergement : " + myData[5]);
+        myViewHebergement.setText("Mt_Hebergement : " + myData[6]);
 
         myViewMotif = (TextView) findViewById(R.id.tv_mt_repas);
-        myViewMotif.setText("Mt_Repas : " + myData[5]);
+        myViewMotif.setText("Mt_Repas : " + myData[7]);
 
         myViewTotal = (TextView) findViewById(R.id.tv_mt_total);
-        myViewTotal.setText("Mt_Total : " + myData[5]);
+        myViewTotal.setText("Mt_Total : " + myData[8]);
     }
 }
