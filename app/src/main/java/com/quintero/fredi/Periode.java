@@ -6,9 +6,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Periode {
-    public int id;
-    public String lib;
-    public int estActive;
+    public int id_periode;
+    public String lib_periode;
+    public int est_active;
     public Double mt_km;
 
     /**
@@ -18,9 +18,9 @@ public class Periode {
      */
     public Periode(JSONObject jsonObject) {
         try {
-            setId(jsonObject.getInt("id"));
-            setLib(jsonObject.getString("lib"));
-            setEstActive(jsonObject.getInt("estActive"));
+            setId_periode(jsonObject.getInt("id_periode"));
+            setLib_periode(jsonObject.getString("lib_periode"));
+            setEst_active(jsonObject.getInt("est_active"));
             setMt_km(jsonObject.getDouble("mt_km"));
 
         } catch (JSONException e) {
@@ -29,28 +29,28 @@ public class Periode {
         }
     }
 
-    public int getId() {
-        return id;
+    public int getId_periode() {
+        return id_periode;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_periode(int id_periode) {
+        this.id_periode = id_periode;
     }
 
-    public String getLib() {
-        return lib;
+    public String getLib_periode() {
+        return lib_periode;
     }
 
-    public void setLib(String lib) {
-        this.lib = lib;
+    public void setLib_periode(String lib_periode) {
+        this.lib_periode = lib_periode;
     }
 
-    public int getEstActive() {
-        return estActive;
+    public int getEst_active() {
+        return est_active;
     }
 
-    public void setEstActive(int estActive) {
-        this.estActive = estActive;
+    public void setEst_active(int est_active) {
+        this.est_active = est_active;
     }
 
     public Double getMt_km() {
@@ -68,9 +68,9 @@ public class Periode {
      */
     public String[] toArray() {
         String data[] = {
-                Integer.toString(getId()),
-                getLib(),
-                Integer.toString(getEstActive()),
+                Integer.toString(getId_periode()),
+                getLib_periode(),
+                Integer.toString(getEst_active()),
                 Double.toString(getMt_km()),
         };
         return data;

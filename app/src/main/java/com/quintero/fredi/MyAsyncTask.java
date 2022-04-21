@@ -72,32 +72,31 @@ public class MyAsyncTask extends AsyncTask<String, Void, String> {
                 // Récupère le contenu du fichier JSON
                 JSONObject jsonObject = new JSONObject(jsonString);
                 String message = jsonObject.getString("succes");
-                Log.d(MainActivity.LOG_TAG, "zebi_all_json_string=" + jsonString);
                 Log.d(MainActivity.LOG_TAG, "zebi_all_message=" + message);
                 // Récupère la liste des clubs
                 if (jsonObject.isNull("succes")==false) {
                     JSONArray lignesArray = jsonObject.getJSONArray("succes");
-                    Log.d(MainActivity.LOG_TAG, "zebi_all_succes=" + lignesArray);
-                    // Boucle de lecture des clubs
                     for (int i = 0; i < lignesArray.length(); i++) {
                         JSONObject listJsonObject = lignesArray.getJSONObject(i);
+                        Log.d(MainActivity.LOG_TAG, "zebi_all_"+i+" : "+ listJsonObject);
                         if(i==0){
-                            User user = new User(listJsonObject);
-                            Log.d(MainActivity.LOG_TAG, "zebi_all_user=" + user);
+                            User user = new User(listJsonObject.getJSONObject("user_info"));
+                            Log.d(MainActivity.LOG_TAG, "zebi_all_A "+user.getNom());
                         }else if(i==1){
-                            Periode periode = new Periode(listJsonObject);
-                            Log.d(MainActivity.LOG_TAG, "zebi_all_periode=" + periode);
+                            Periode  periode = new Periode(listJsonObject.getJSONObject("periode_info"));
+                            Log.d(MainActivity.LOG_TAG, "zebi_all_A "+periode.getLib_periode());
+                        }else if(i==2){
+                            Note  note = new Note(listJsonObject.getJSONObject("note_info"));
+                            Log.d(MainActivity.LOG_TAG, "zebi_all_A "+note.getNr_ordre());
                         }else{
-                            Note note = new Note(listJsonObject);
-                            Log.d(MainActivity.LOG_TAG, "zebi_all_note=" + note);
-
+                            Log.d(MainActivity.LOG_TAG, "zebi_all_E : Une boucle de trop aga");
                         }
                         // Crée un objet métier Club à partir de l'objet JSONObject
-                        Ligne ligne = new Ligne(listJsonObject);
+                        //Ligne ligne = new Ligne(listJsonObject);
                         // Ajoute l'objet métier dans la collection ArrayList<Club>
-                        myLignes.add(ligne);
+                        //myLignes.add(ligne);
                         // Ajoute le libellé du club dans la collection ArrayList<String>
-                        myArrayList.add(ligne.lib_trajet);
+                        //myArrayList.add(ligne.lib_trajet);
 
                     }
                 } else {

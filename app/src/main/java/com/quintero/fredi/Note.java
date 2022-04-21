@@ -2,8 +2,11 @@ package com.quintero.fredi;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class Note {
     public int id;
@@ -13,6 +16,7 @@ public class Note {
     public String nr_ordre;
     public int id_periode;
     public int id_utilisateur;
+    public ArrayList<Ligne> lignes = new ArrayList<Ligne>();
 
     /**
      * Constructeur
@@ -28,6 +32,7 @@ public class Note {
             setNr_ordre(jsonObject.getString("nr_ordre"));
             setId_periode(jsonObject.getInt("id_periode"));
             setId_utilisateur(jsonObject.getInt("id_utilisateur"));
+            setLignes(jsonObject.getJSONArray("lignes"));
 
         } catch (JSONException e) {
             Log.d(MainActivity.LOG_TAG,"Erreur lors de la conversion de l'objet JSON en objet Ligne");
@@ -89,6 +94,16 @@ public class Note {
 
     public void setId_utilisateur(int id_utilisateur) {
         this.id_utilisateur = id_utilisateur;
+    }
+
+    public ArrayList<Ligne> getLignes() {
+        return lignes;
+    }
+
+    public void setLignes(JSONArray json_lignes) {
+        for(int i = 0; i<json_lignes.length();i++){
+            lignes.add(new Ligne(json_lignes.getJSONObject(i)));
+        }
     }
 
     /**
